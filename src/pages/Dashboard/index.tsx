@@ -9,7 +9,7 @@ const Dashboard: React.FC = () => {
     signOut();
   }
   return (
-    <View style={styles.signin}>
+    <View style={styles.signout}>
       <Button title="Sign out" onPress={handleSignOut} />
     </View>
   );
@@ -18,7 +18,7 @@ const Dashboard: React.FC = () => {
 export default Dashboard;
 
 const styles = StyleSheet.create({
-  signin: {
+  signout: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

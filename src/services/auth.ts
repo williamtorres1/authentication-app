@@ -7,7 +7,7 @@ interface Response {
 }
 
 export function signIn(): Promise<Response> {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve({
         token: 'dskjfskldjfdsf',
