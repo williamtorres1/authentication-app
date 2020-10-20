@@ -18,7 +18,7 @@ interface AuthContextDTO {
 const AuthContext = createContext<AuthContextDTO>({} as AuthContextDTO);
 
 export const AuthProvider: React.FC = ({children}) => {
-  const [user, setUser] = useState<object | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
