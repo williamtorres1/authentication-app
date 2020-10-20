@@ -1,21 +1,17 @@
 import React, {useContext} from 'react';
-
-import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
-import {signIn} from '../../services/auth';
+import {View, Button, StyleSheet} from 'react-native';
 import AuthContext from '../../contexts/auth';
 
 const SignIn: React.FC = () => {
-  const {signed} = useContext(AuthContext);
+  const {signed, signIn} = useContext(AuthContext);
   console.log(signed);
-  async function handleSignIn() {
-    const response = await signIn();
-    console.log(response);
+  function handleSignIn() {
+    // Mudar a informação de que o usuário esta logado
+    signIn();
   }
   return (
     <View style={styles.signin}>
-      <TouchableOpacity onPress={handleSignIn}>
-        <Text style={{color: 'blue'}}>SignIn</Text>
-      </TouchableOpacity>
+      <Button title="Sign In" onPress={handleSignIn} />
     </View>
   );
 };
