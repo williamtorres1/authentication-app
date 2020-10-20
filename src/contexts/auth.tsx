@@ -2,9 +2,14 @@ import React, {createContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as auth from '../services/auth';
 import api from '../services/api';
+
+interface User {
+  name: string;
+  email: string;
+}
 interface AuthContextDTO {
   signed: boolean;
-  user: object | null;
+  user: User | null;
   loading: boolean;
   signIn(): Promise<void>;
   signOut(): void;

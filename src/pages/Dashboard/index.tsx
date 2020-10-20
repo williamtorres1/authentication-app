@@ -1,9 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {View, Button, StyleSheet} from 'react-native';
-import AuthContext from '../../contexts/auth';
-
+import {useAuth} from '../../hooks/';
 const Dashboard: React.FC = () => {
-  const {signOut} = useContext(AuthContext);
+  const {signOut} = useAuth();
   function handleSignOut() {
     // Mudar a informação de que o usuário esta logado
     signOut();
