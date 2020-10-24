@@ -2,6 +2,7 @@ import React, {createContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as auth from '../services/auth';
 import api from '../services/api';
+import Axios from 'axios';
 
 interface User {
   name: string;
@@ -12,6 +13,7 @@ interface AuthContextDTO {
   user: User | null;
   loading: boolean;
   signIn(): Promise<void>;
+  signUp(): Promise<void>;
   signOut(): void;
 }
 
@@ -35,6 +37,7 @@ export const AuthProvider: React.FC = ({children}) => {
     }
     loadStoragedData();
   }, []);
+
   async function signIn() {
     const response = await auth.signIn();
 
@@ -46,6 +49,14 @@ export const AuthProvider: React.FC = ({children}) => {
       ['@RNAuth:token', response.token],
     ]);
   }
+
+  async function signUp() {
+    const response = await Axios.get(
+      'http://api.github.com/users/williamtorres1',
+    );
+    console.log(response);
+  }
+
   function signOut() {
     AsyncStorage.clear().then(() => {
       setUser(null);
@@ -54,7 +65,7 @@ export const AuthProvider: React.FC = ({children}) => {
 
   return (
     <AuthContext.Provider
-      value={{signed: !!user, user, loading, signIn, signOut}}>
+      value={{signed: !!user, user, loading, signIn, signUp, signOut}}>
       {children}
     </AuthContext.Provider>
   );

@@ -3,8 +3,7 @@ import {View, Button, StyleSheet} from 'react-native';
 import {useAuth} from '../../hooks';
 
 const SignIn: React.FC = () => {
-  const {signed, signIn} = useAuth();
-  console.log(signed);
+  const {signIn} = useAuth();
   function handleSignIn() {
     // Mudar a informação de que o usuário esta logado
     signIn();
